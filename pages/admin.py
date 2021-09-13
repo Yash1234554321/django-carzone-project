@@ -5,21 +5,16 @@ from .models import Team
 
 # Register your models here.
 class TeamAdmin(admin.ModelAdmin):
+    def thumbnail(self,object):
+        return format_html('<img src="{}" width="40" style="border-radius:50px;" />'.format(object.photo.url))
 
-    # def admin_thumbnail(self):
-    #     return u'<img src="%s" />' % (self.photo.url)
-    # admin_thumbnail.short_description = 'Thumbnail'
-    # admin_thumbnail.allow_tags = True   
+    thumbnail.short_description = "Photo"
 
-    # def thumbnail(self,object):
-    #     return format_html('<img src="{}" width="40" style="border-radius:50px;" />'.format(object.photo.url))
-
-    # thumbnail.short_description = "Photo"
-
-    list_display = ("id","first_name","designation","created_date")
+    list_display = ("id","thumbnail","first_name","designation","created_date")
     list_display_links = ("id","first_name")
     search_fields = ("first_name","last_name","designation")
     list_filter = ("designation",)
+    
 
 admin.site.register(Team,TeamAdmin)
 
