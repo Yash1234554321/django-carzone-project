@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = "dashboard"
 
 # Application definition
 
@@ -42,6 +43,16 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'pages',
     'cars',
+    'accounts',
+    'contacts',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    #Providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +152,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Media settings
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
+
+
+#Messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+SITE_ID = 1
+
+#Email settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '123123yesyesyes@gmail.com'
+EMAIL_HOST_PASSWORD = 'fuckingpassw0rd'
+EMAIL_USE_TLS = True
+
