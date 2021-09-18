@@ -1,12 +1,12 @@
 from django.shortcuts import get_object_or_404, render
-from django.core.paginator import EmptyPage,PageNotAnInteger,Paginator
+from django.core.paginator import Paginator
 
 from .models import Car
 from cars import models
 # Create your views here.
 def cars(request):
     cars = Car.objects.order_by("-created_date")
-    paginator = Paginator(cars,"2")
+    paginator = Paginator(cars,"4")
     page = request.GET.get("page")
     paged_cars = paginator.get_page(page)
     model_search = Car.objects.values_list("model",flat=True).distinct()
