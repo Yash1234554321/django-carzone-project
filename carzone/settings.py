@@ -111,8 +111,6 @@ DATABASES = {
     }
 }
 
-# DATABASES = {'default':dj_database_url.config(default='postgres://postgres:p@ssw0rd@localhost/carzone_db')}
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
